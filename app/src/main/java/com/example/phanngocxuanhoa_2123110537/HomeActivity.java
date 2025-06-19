@@ -29,13 +29,7 @@ public class HomeActivity extends AppCompatActivity {
             "Bánh Su Kem",
             "Bánh Flan Caramel"
     };
-    int[] images = {
-            R.drawable.ic_suachua,
-            R.drawable.ic_panna,
-            R.drawable.ic_banhkem,
-            R.drawable.ic_banhquy,
-            R.drawable.ic_tiramisu
-    };
+
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
