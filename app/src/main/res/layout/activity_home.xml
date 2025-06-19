@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#f4c2d7">
+
+        <!-- Toolbar -->
+        <LinearLayout
+            android:id="@+id/homeToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#efb0c9"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <ImageView
+                android:id="@+id/menuIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_menu"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:id="@+id/homeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_marginEnd="16dp" />
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:iconifiedByDefault="false"
+                android:queryHint="Tìm kiếm..."
+                android:background="@drawable/search_background"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- Nội dung dưới -->
+        <ImageView
+            android:id="@+id/imageSlider"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/slider1" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/layoutCategories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+                <!-- Các danh mục -->
+                <TextView android:text="Tất cả" style="@style/CategoryTextStyle"/>
+                <TextView android:text="Bánh kem" style="@style/CategoryTextStyle"/>
+                <TextView android:text="Bánh mì" style="@style/CategoryTextStyle"/>
+                <TextView android:text="Bánh quy" style="@style/CategoryTextStyle"/>
+                <TextView android:text="Panna cotta" style="@style/CategoryTextStyle"/>
+                <TextView android:text="Sữa chua" style="@style/CategoryTextStyle"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- ListView hiển thị danh sách bánh -->
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
