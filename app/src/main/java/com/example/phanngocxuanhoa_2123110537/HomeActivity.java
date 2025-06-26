@@ -3,9 +3,7 @@ package com.example.phanngocxuanhoa_2123110537;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -18,7 +16,7 @@ public class HomeActivity extends AppCompatActivity {
 
     ListView listNganh;
 
-    String[] tutorials ={
+    String[] tutorials = {
             "Sữa chua Hy Lạp",
             "Pannacotta Vani",
             "Bánh kem Chocolate",
@@ -30,36 +28,34 @@ public class HomeActivity extends AppCompatActivity {
             "Bánh Flan Caramel"
     };
 
-    @SuppressLint({"WrongViewCast", "MissingInflatedId"})
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
-        // Ẩn ActionBar mặc định để hiển thị toolbar tùy chỉnh
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        listNganh=findViewById(R.id.list);
-        ArrayAdapter<String> arr;
 
-        arr=new ArrayAdapter<String>(this,
-                R.layout.item_home,tutorials);
+        listNganh = findViewById(R.id.list);
 
-        listNganh.setAdapter(arr);
-//        Button aa = findViewById(R.id.btnBack);
-//        aa.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent b = new Intent(getApplicationContext(),LoginActivity.class);
-//                startActivity(b);
-//            }
-//        });
+        // Gán adapter tùy chỉnh
+        TutorialAdapter adapter = new TutorialAdapter(this, tutorials);
+        listNganh.setAdapter(adapter);
+
+        // 👉 Gán sự kiện click icon giỏ hàng
+        ImageView cartIcon = findViewById(R.id.cartIcon);
+        cartIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+            startActivity(intent);
+        });
     }
-
 }

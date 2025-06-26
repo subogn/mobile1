@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:ellipsize="marquee"
-    android:singleLine="true"
-    android:textAppearance="?android:attr/textAppearanceListItemSmall"
-    android:textSize="16dp"
-    android:paddingEnd="16dp"
-    android:gravity="center_vertical" />
+    android:padding="12dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@android:color/white">
+
+    <!-- Hình ảnh món ăn -->
+    <ImageView
+        android:id="@+id/imgItem"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="12dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_foreground" /> <!-- ảnh tạm -->
+
+    <!-- Tên món -->
+    <TextView
+        android:id="@+id/txtItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="Tên món"
+        android:textSize="16sp"
+        android:textColor="#000000" />
+
+    <!-- Nút chi tiết -->
+    <Button
+        android:id="@+id/btnDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chi tiết"
+        android:textSize="14sp"
+        android:backgroundTint="#efb0c9"
+        android:textColor="#ffffff"
+        android:layout_marginStart="8dp"/>
+</LinearLayout>

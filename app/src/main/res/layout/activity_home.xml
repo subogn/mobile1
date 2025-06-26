@@ -51,6 +51,14 @@
                 android:queryHint="Tìm kiếm..."
                 android:background="@drawable/search_background"
                 android:layout_marginStart="8dp" />
+
+            <ImageView
+                android:id="@+id/cartIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_cart"
+                android:layout_marginLeft="10dp"
+                android:contentDescription="Giỏ hàng" />
         </LinearLayout>
 
         <!-- Nội dung dưới -->
@@ -76,7 +84,7 @@
 
                 <!-- Các danh mục -->
                 <TextView android:text="Tất cả" style="@style/CategoryTextStyle"/>
-                <TextView android:text="Bánh kem" style="@style/CategoryTextStyle"/>
+                <TextView android:id="@+id/Banhkem" android:text="Bánh kem" style="@style/CategoryTextStyle"/>
                 <TextView android:text="Bánh mì" style="@style/CategoryTextStyle"/>
                 <TextView android:text="Bánh quy" style="@style/CategoryTextStyle"/>
                 <TextView android:text="Panna cotta" style="@style/CategoryTextStyle"/>
@@ -91,6 +99,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp" />
+            android:dividerHeight="1dp"
+            android:layout_marginTop="16dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
