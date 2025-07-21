@@ -7,11 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
+    <!-- Hình ảnh nền -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_bglogin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#f4c2d7">
+        android:orientation="vertical">
 
         <!-- Toolbar -->
         <LinearLayout
@@ -52,12 +66,23 @@
                 android:background="@drawable/search_background"
                 android:layout_marginStart="8dp" />
 
+            <!-- ✅ Account icon -->
+            <ImageView
+                android:id="@+id/accountIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_account"
+                android:layout_marginStart="10dp"
+                android:contentDescription="Tài khoản"
+                app:tint="#000000" />
+
+            <!-- ✅ Cart icon -->
             <ImageView
                 android:id="@+id/cartIcon"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_cart"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:contentDescription="Giỏ hàng" />
         </LinearLayout>
 
@@ -98,8 +123,10 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="16dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="12dp" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

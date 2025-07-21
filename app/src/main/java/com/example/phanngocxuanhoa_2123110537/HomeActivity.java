@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,9 +13,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class HomeActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+public class HomeActivity extends AppCompatActivity {
     ListView listNganh;
+    SearchView searchView;
 
     String[] tutorials = {
             "Sữa chua Hy Lạp",
@@ -28,13 +33,15 @@ public class HomeActivity extends AppCompatActivity {
             "Bánh Flan Caramel"
     };
 
+    List<String> tutorialList; // Danh sách dữ liệu động để tìm kiếm
+    TutorialAdapter adapter;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
-
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -46,10 +53,27 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         listNganh = findViewById(R.id.list);
+        searchView = findViewById(R.id.searchView); // tìm view SearchView
 
-        // Gán adapter tùy chỉnh
-        TutorialAdapter adapter = new TutorialAdapter(this, tutorials);
+        // Chuyển mảng sang danh sách để dễ xử lý
+        tutorialList = new ArrayList<>(Arrays.asList(tutorials));
+        adapter = new TutorialAdapter(this, tutorialList);
         listNganh.setAdapter(adapter);
+
+        // 👉 Gán sự kiện tìm kiếm
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Không cần xử lý khi nhấn Enter
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText); // Lọc danh sách khi người dùng gõ
+                return true;
+            }
+        });
 
         // 👉 Gán sự kiện click icon giỏ hàng
         ImageView cartIcon = findViewById(R.id.cartIcon);
@@ -57,5 +81,16 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent = new Intent(HomeActivity.this, CartActivity.class);
             startActivity(intent);
         });
+    }
+
+    // Hàm lọc danh sách theo từ khóa
+    private void filterList(String keyword) {
+        List<String> filteredList = new ArrayList<>();
+        for (String item : tutorials) {
+            if (item.toLowerCase().contains(keyword.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        adapter.updateData(filteredList); // Gọi hàm cập nhật adapter
     }
 }
